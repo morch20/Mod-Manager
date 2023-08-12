@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--background: #fff;
+	--foreground-rgb: 0, 0, 0;
+	--green: #1bd96a;
+	--gray: #26292f;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background: #16181c;
+	}
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: var(--background);
+}
+
+.nav__links__animation {
+	position: relative;
+}
+
+.nav__links__animation::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	border-radius: 4px;
+	background-color: var(--green);
+	bottom: 0;
+	left: 0;
+	transform-origin: right;
+	transform: scaleX(0);
+	transition: transform 0.3s ease-in-out;
+}
+
+.nav__links__animation:hover::before {
+	transform-origin: left;
+	transform: scaleX(1);
+}
+
+.nav__links__selected::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	border-radius: 4px;
+	background-color: var(--green);
+	bottom: 0;
+	left: 0;
+	transform-origin: right;
+	transform: scale(1);
+}
+
+.shake:hover > span{
+  	animation: tilt-shaking 0.25s infinite
+}
+
+@keyframes tilt-shaking {
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(5deg); }
+	50% { transform: rotate(0eg); }
+	75% { transform: rotate(-5deg); }
+	100% { transform: rotate(0deg); }
+}
+
+.grid-auto-fill {
+	grid-template-columns: repeat(auto-fill, 240px);
+}
+
+.scrollbar-none::-webkit-scrollbar{
+    display: none;
+  }
+
+.reset a{
+	@apply text-blue-700 underline;
+}
+.reset p{
+	@apply my-4 text-gray-400;
+}
+
+.reset blockquote, figure {
+	@apply my-4 mx-10;
+}
+
+.reset h1 {
+	@apply text-4xl font-bold my-2 pb-2 border-b border-slate-700;
+}
+
+.reset	h2 {
+	@apply text-2xl font-bold my-3 pb-2 border-b border-slate-700;
+}
+
+.reset h3 {
+	@apply text-lg font-bold my-4;
+}
+
+.reset h4 {
+	@apply text-base font-bold my-5;
+}
+
+.reset ul, menu {
+	@apply list-disc my-4 pl-10;
+}
+
+.reset 	li  {
+	@apply my-0 text-gray-400;
+}
+
+.reset 	ol {
+	@apply list-decimal my-4 pl-10;
+}
+
+.reset 	legend {
+	@apply py-0 px-1;
+}
+
+.reset fieldset {
+	@apply my-0 mx-1 pt-0 px-1 pb-2;
+}
+
+.reset b, strong {
+	font-weight: bold;
+}
+
+.reset pre {
+	@apply my-4;
+}
