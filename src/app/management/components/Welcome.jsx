@@ -1,9 +1,16 @@
 'use client';
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 
 const Welcome = () => {
 
     const {data: session} = useSession();
+    const router = useRouter();
+
+    if(!session?.user){
+        router.push('/signin?redirect=management');
+    }
 
     return (
         <div>

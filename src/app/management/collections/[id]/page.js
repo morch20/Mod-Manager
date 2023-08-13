@@ -76,10 +76,13 @@ const Collection = ({ params }) => {
 
             {
                 openDelete &&
-                <div className="absolute z-10 top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[26rem] h-52 flex flex-col justify-between rounded-xl bg-[color:var(--gray)] p-4">
+                <div className="absolute shadow-lg shadow-gray-900 z-10 top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[26.5rem] min-h-52 flex flex-col justify-between rounded-xl bg-[color:var(--gray)] p-4">
                     <h2 className="text-3xl font-semibold w-full">
-                        Delete {params.id.replaceAll('%20', ' ')} collection?🤔
+                        Delete "{params.id.replaceAll('%20', ' ')}" collection?🤔
                     </h2>
+                    <p className="text-gray-400 text-sm mt-3 mb-8">
+                        The collection will be deleted, but all the mods will stay saved :)
+                    </p>
 
                     <div className="w-full flex justify-around items-center">
                         <button onClick={handleDelete} className="py-2 px-4 sm:py-4 sm:px-6 bg-red-400 rounded-lg">
