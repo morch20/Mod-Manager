@@ -1,6 +1,7 @@
 'use client';
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 
 const Welcome = () => {
@@ -8,10 +9,13 @@ const Welcome = () => {
     const {data: session} = useSession();
     const router = useRouter();
 
-    if(!session?.user){
-        router.push('/signin?redirect=management');
-    }
-
+    
+    useEffect(() => {
+        if(!session?.user){
+            router.push('/signin?redirect=management');
+        }
+    }, [])
+    
     return (
         <div>
             <div className=" my-2 text-4xl sm:text-5xl font-bold flex flex-col items-center">
