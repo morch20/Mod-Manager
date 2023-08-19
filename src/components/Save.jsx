@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from 'react';
 import { useOutsideClick } from '@/hooks';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 
 const Save = ({ values, text }) => {
@@ -17,6 +18,7 @@ const Save = ({ values, text }) => {
     const [collections, setCollections] = useState([]);
     const [showInput, setShowInput] = useState(false);
     const [newCollectionName, setNewCollectionName] = useState('');
+    const pathname = usePathname();
 
     const currentModCollections = useRef([]);
 
@@ -309,7 +311,7 @@ const Save = ({ values, text }) => {
     }
 
     return (
-        <Link href="/signin">
+        <Link href={"/signin?redirect=" + pathname}>
             {
                 text
                 ?
