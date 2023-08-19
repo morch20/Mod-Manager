@@ -15,8 +15,8 @@ const SignIn = () => {
     const [providers, setProviders] = useState(null);
 
     if(session?.user){
-        const redirect = searchParams.get('redirect') || 'mods';
-        router.push('/' + redirect);
+        const redirect = searchParams.get('redirect') || '/mods';
+        router.push(redirect);
     }
     
     useEffect(() => {

@@ -12,7 +12,7 @@ const Welcome = () => {
     
     useEffect(() => {
         if(!session?.user){
-            router.push('/signin?redirect=management');
+            router.push('/signin?redirect=/management');
         }
     }, [])
     
