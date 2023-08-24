@@ -1,12 +1,12 @@
 import { isClientServer } from "@/utils/functions";
 import { Save } from "@/components";
 import Image from "next/image";
-import { RxCube } from 'react-icons/rx';
+import { Icons } from "@/components";
 import Link from "next/link";
 
 
 const Mod = ({ values }) => {
-    console.log(values)
+
     const clientServer = isClientServer(values.client_side, values.server_side);
 
     return (
@@ -38,7 +38,7 @@ const Mod = ({ values }) => {
                 </h4>
                 <div className="w-full flex flex-wrap gap-x-5 justify-start">
                     <div className="flex gap-x-1 items-center">
-                        {/* <Icons name={clientServer[1]} /> */}
+                        <Icons name={clientServer[1]} />
                         <p >{clientServer[0]}</p>
                     </div>
                 </div>

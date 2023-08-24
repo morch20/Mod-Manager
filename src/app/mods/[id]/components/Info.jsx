@@ -3,9 +3,8 @@ import Image from "next/image";
 import { RxCube, RxUpdate } from 'react-icons/rx';
 import { isClientServer, nFormatter, calculateDate } from "@/utils/functions";
 import { AiOutlineHeart, AiOutlineDownload, AiOutlineCalendar } from 'react-icons/ai';
-import { BsFillBookmarkFill } from 'react-icons/bs';
 import { Save } from "@/components";
-// import { Icons } from "@/components";
+import { Icons } from "@/components";
 
 
 export default async function Info({ info }) {
@@ -46,13 +45,13 @@ export default async function Info({ info }) {
 
             <div className="w-full flex flex-wrap gap-x-5 justify-start my-2 ">
                 <div className="flex gap-x-1 items-center">
-                    {/* <Icons name={clientServer[1]} /> */}
+                    <Icons name={clientServer[1]} />
                     <h4 className="font-bold">{clientServer[0]}</h4>
                 </div>
                 {
                     info.categories?.map( category => (
                         <div key={category}  className="flex gap-x-1 items-center">
-                            {/* <Icons name={category} /> */}
+                            <Icons name={category} />
                             <p className=" first-letter:capitalize" key={category}>{category}</p>
                         </div>
                     ))
@@ -90,10 +89,6 @@ export default async function Info({ info }) {
             <hr />
 
             <div className="my-2 w-fit">
-                {/* <button className=" hover:text-gray-300 flex items-center justify-center gap-x-1 py-1 px-2 font-semibold w-28 bg-gray-700 active:bg-gray-600 rounded-xl">
-                    <BsFillBookmarkFill />
-                    <p>Save</p>
-                </button> */}
                 <Save values={info} text/>
             </div>
         </div>

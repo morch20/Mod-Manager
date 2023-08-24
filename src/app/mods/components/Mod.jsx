@@ -3,6 +3,7 @@ import { AiOutlineHeart, AiOutlineDownload } from 'react-icons/ai';
 import { RxUpdate, RxCube } from 'react-icons/rx';
 import { calculateDate, nFormatter, isClientServer } from "@/utils/functions";
 import Link from "next/link";
+import { Icons } from "@/components";
 
 import { Save } from "@/components";
 
@@ -33,7 +34,7 @@ const Mod = ({ values }) => {
                     />
                 </Link>
                 <div>
-                    <div className="flex gap-x-2 sm:items-end flex-col sm:flex-row">
+                    <div className="flex gap-x-2 sm:items-end flex-col sm:flex-row leading-normal">
                         <Link href={'mods/' + values.project_id}>
                             <h3 className=' text-white text-xl xsm:text-2xl font-semibold leading-5'>
                                 {values.title}
@@ -51,7 +52,7 @@ const Mod = ({ values }) => {
 
             <div className="w-full flex flex-wrap gap-x-5 justify-start my-2">
                 <div className="flex gap-x-1 items-center">
-                    {/* <Icons name={clientServer[1]} /> */}
+                    <Icons name={clientServer[1]} />
                     {
                         clientServer &&
                         <h4 className="font-bold">{clientServer[0]}</h4>
@@ -64,7 +65,7 @@ const Mod = ({ values }) => {
                 {
                     values.display_categories?.map( category => (
                         <div key={category}  className="flex gap-x-1 items-center">
-                            {/* <Icons name={category} /> */}
+                            <Icons name={category} />
                             <p className=" first-letter:capitalize" key={category}>{category}</p>
                         </div>
                     ))

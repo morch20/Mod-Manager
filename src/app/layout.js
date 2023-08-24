@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
 			<body className={inter.className} suppressHydrationWarning={true} >
 
 				<Provider>
-					<div className='flex flex-col justify-center items-center'>
+					<div className='flex flex-col justify-center items-center overflow-x-clip'>
 						<main className='container'>
 							<Navbar/>
 							{children}
