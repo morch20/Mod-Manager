@@ -169,13 +169,13 @@ const Save = ({ values, text }) => {
                             {
                                 text
                                 ?
-                                    <button className=" hover:text-gray-300 flex items-center justify-center gap-x-1 py-1 px-2 font-semibold w-28 bg-gray-700 active:bg-gray-600 rounded-xl">
+                                    <button className=" hover:text-gray-300 flex items-center justify-center gap-x-1 hover:py-2 py-1 px-2 font-semibold transition-all hover:w-32 w-28 bg-gray-700 active:bg-gray-600 rounded-xl">
                                         {isSaved === 'text-white' ? <BsFillBookmarkFill /> : <BsBookmark />}
                                         <p>{isSaved === 'text-white' ? 'Saved' : "Save"}</p>
                                     </button>
                                 :
                                     <button>
-                                        {isSaved === 'text-white' ? <BsFillBookmarkFill /> : <BsBookmark />}
+                                        {isSaved === 'text-white' ? <BsFillBookmarkFill className='hover:w-5 hover:h-5 transition-all  ' /> : <BsBookmark className='hover:w-5 hover:h-5 transition-all hover:text-white ' />}
                                     </button>
                             }
                             {
@@ -315,12 +315,12 @@ const Save = ({ values, text }) => {
             {
                 text
                 ?
-                    <button className=" hover:text-gray-300 flex items-center justify-center gap-x-1 py-1 px-2 font-semibold w-28 bg-gray-700 active:bg-gray-600 rounded-xl">
-                        <BsBookmarkDash />
+                    <button className=" hover:text-gray-300 flex items-center justify-center gap-x-1 hover:py-2 py-1 px-2 font-semibold transition-all hover:w-32 w-28 bg-gray-700 active:bg-gray-600 rounded-xl">
+                        <BsBookmark />
                         <p>Save</p>
                     </button>
                 :
-                    <BsBookmarkDash />
+                    <BsBookmark className='hover:w-5 hover:h-5 transition-all hover:text-white ' />
             }
         </Link>
     )

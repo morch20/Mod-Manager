@@ -32,7 +32,7 @@ const SortBy = ({ options, width, initial, query }) => {
     return (
         <div ref={ref} className="relative">
             <button 
-                className={width + " flex items-center justify-between active:bg-gray-600 bg-gray-700 p-2 text-gray-400 " + (open ? "rounded-t-xl" : "rounded-xl")}
+                className={width + " hover:text-white flex items-center justify-between active:bg-gray-600 bg-gray-700 p-2 text-gray-400 " + (open ? "rounded-t-xl" : "rounded-xl")}
                 onClick={() => {
                     setOpen(prev => !prev);
                 }}

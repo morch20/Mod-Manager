@@ -39,7 +39,7 @@ const SearchBar = ({ query }) => {
 			onClick={() => {
 				setActive(true);
 			}} 
-			className={"relative bg-gray-700 text-gray-400 p-1 rounded-xl w-64 h-10 flex items-center " + (active ? "outline-green-500 outline": "")}
+			className={"relative hover:text-white bg-gray-700 text-gray-400 p-1 rounded-xl w-64 h-10 flex items-center " + (active ? "outline-green-500 outline": "")}
 		>
 			<AiOutlineSearch size={20} />
 			<input 

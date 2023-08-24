@@ -11,7 +11,7 @@ export default function Home() {
 					width={200}
 					height={200}
 					className="w-screen h-screen object-cover"
-					quality={100}
+					unoptimized={true}
 					alt="Background Image"
 				/>
 			</div>
@@ -20,10 +20,15 @@ export default function Home() {
 	
 				<Logo />
 				
-				<h1 className=" font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center">
-					The Place for Minecraft 
-					<span className=" block text-[color:var(--green)]">Management</span>
-				</h1>
+				<div>
+					<h1 className=" font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center">
+						The Place for Minecraft
+						<span className=" block text-[color:var(--green)]">Management</span>
+					</h1>
+					<p className="mt-10 text-center text-gray-400 text-lg md:w-3/4 mx-auto md:text-xl">
+						Discover, manage, and keep track of all your favorite minecraft mods all in one place.
+					</p>
+				</div>
 
 			</header>
 		</div>
