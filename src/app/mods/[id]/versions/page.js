@@ -10,6 +10,16 @@ const Versions = async ({ params }) => {
 	const versions = await getVersions(params.id);
 	const dateOptions = [{day: 'numeric'}, {month: 'short'}, {year: 'numeric'}];
 
+	const versionTypeColor = (version, bg) => {
+		if(version === 'release'){
+			return bg ? ' bg-[color:var(--green)]' : ' text-[color:var(--green)]';
+		}
+		if(version === 'beta'){
+			return bg ? ' bg-orange-400' : ' text-orange-400';
+		}
+		return bg ? ' bg-red-500' : ' text-red-500';
+	}
+
 	return (
 		<div className="p-4 ">
 
@@ -38,8 +48,10 @@ const Versions = async ({ params }) => {
 								<div className='w-[30%]'>
 									<h3 className='font-semibold'>{i.name}</h3>
 									<div className='flex gap-x-1 items-center  '>
-										<span className='h-2 w-2 rounded-full bg-[color:var(--green)]'/>
-										<p className='first-letter:uppercase font-semibold text-[color:var(--green)]'>{i.version_type}</p>
+										<span className={'h-2 w-2 rounded-full ' + versionTypeColor(i.version_type, true)} />
+										<p className={'first-letter:uppercase font-semibold ' + versionTypeColor(i.version_type)}>
+											{i.version_type}
+										</p>
 										<span>{i.version_number}</span>
 									</div>
 								</div>
