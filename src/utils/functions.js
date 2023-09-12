@@ -90,6 +90,8 @@ const isClientServer = (client, server) => {
 	if(client === 'unsupported' && server !== 'unsupported'){
 		return ["Server", 'server'];
 	}
+
+    return ["Unsupported", "unsupported"];
 }
 
 module.exports = { calculateDate, nFormatter, isClientServer };
