@@ -87,6 +87,7 @@ const Icons = ({ name }) => {
             return <AiOutlineCloudServer />
 
         case 'both':
+        case 'unsupported':
             return <TbWorld />
 
         case 'ko-fi':
