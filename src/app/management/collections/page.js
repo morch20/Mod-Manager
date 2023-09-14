@@ -9,9 +9,11 @@ const Collections = () => {
     const [collections, setCollections] = useState([]);
     
     useEffect(() => {
-        setPending(true);
 
-        fetch('/api/collections')
+        setPending(true);
+        const controller = new AbortController();
+
+        fetch('/api/collections', {signal: controller.signal})
         .then(response => response.json())
         .then(data => {
             data.unshift('All Posts');
@@ -22,6 +24,9 @@ const Collections = () => {
             console.log(e);
             setPending(false);
         })
+
+        return () => controller.abort();
+
     }, [])
 
     return (

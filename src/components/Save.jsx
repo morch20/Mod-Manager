@@ -134,12 +134,12 @@ const Save = ({ values, text }) => {
 
     useEffect(() => {
 
-        //const controller = new AbortController();
+        const controller = new AbortController();
 
         if(session?.user){
             setPending(true);
             fetch('/api/mods/' + values.project_id, {
-                //signal: controller.signal,
+                signal: controller.signal,
                 cache: 'no-store'
             })
             .then(response => response.json())
@@ -158,7 +158,7 @@ const Save = ({ values, text }) => {
             });
         }
 
-        //return () => controller.abort();
+        return () => controller.abort();
 
     }, []);
 
