@@ -1,6 +1,6 @@
 'use client';
 import { useSession } from 'next-auth/react';
-import { BsFillBookmarkFill, BsBookmark, BsBookmarkDash } from 'react-icons/bs';
+import { BsFillBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { AiOutlineLoading, AiOutlinePlus, AiOutlineClose, AiOutlinePlusCircle, AiOutlineDelete } from 'react-icons/ai';
 import Link from "next/link";
 import { useEffect, useState, useRef } from 'react';
@@ -134,9 +134,14 @@ const Save = ({ values, text }) => {
 
     useEffect(() => {
 
+        //const controller = new AbortController();
+
         if(session?.user){
             setPending(true);
-            fetch('/api/mods/' + values.project_id)
+            fetch('/api/mods/' + values.project_id, {
+                //signal: controller.signal,
+                cache: 'no-store'
+            })
             .then(response => response.json())
             .then(data => {
                 if(data.found){
@@ -152,6 +157,8 @@ const Save = ({ values, text }) => {
                 setPending(false);
             });
         }
+
+        //return () => controller.abort();
 
     }, []);
 
