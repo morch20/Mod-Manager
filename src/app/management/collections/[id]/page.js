@@ -43,7 +43,9 @@ const Collection = ({ params }) => {
     useEffect(() => {
 
         setPending(true);
-        fetch('/api/collections/' + params.id)
+        const controller = new AbortController();
+
+        fetch('/api/collections/' + params.id, {signal: controller.signal})
         .then(response => {
             if(response.status === 404){
                 setError(true);
@@ -68,6 +70,8 @@ const Collection = ({ params }) => {
             console.log(e);
             setPending(false);
         })
+
+        return () => controller.abort();
 
     }, [])
 
