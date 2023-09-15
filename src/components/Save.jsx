@@ -21,7 +21,7 @@ const Save = ({ values, text }) => {
     const pathname = usePathname();
 
     const currentModCollections = useRef([]);
-
+    const visibleRef = useRef();
 
     const ref = useOutsideClick(() => {
         setOpenPopUp(false);
@@ -136,35 +136,47 @@ const Save = ({ values, text }) => {
 
         const controller = new AbortController();
 
+        const observer = new IntersectionObserver((entries, observer) => {
+            const entry = entries[0];
+            if(session?.user && entry.isIntersecting){
+                observer.disconnect();
+                setPending(true);
+                fetch('/api/mods/' + values.project_id, {
+                    signal: controller.signal,
+                    cache: 'no-store'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.found){
+                        console.log(data)
+                        setIsSaved('text-white');
+                        currentModCollections.current = data.collections;
+                        console.log(currentModCollections)
+                    }
+                    setPending(false)
+                })
+                .catch(e => {
+                    console.log(e);
+                    setPending(false);
+                });
+            }
+        });
+
         if(session?.user){
-            setPending(true);
-            fetch('/api/mods/' + values.project_id, {
-                signal: controller.signal,
-                cache: 'no-store'
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.found){
-                    console.log(data)
-                    setIsSaved('text-white');
-                    currentModCollections.current = data.collections;
-                    console.log(currentModCollections)
-                }
-                setPending(false)
-            })
-            .catch(e => {
-                console.log(e);
-                setPending(false);
-            });
+            observer.observe(visibleRef.current);
         }
 
-        return () => controller.abort();
 
-    }, []);
+        return () => {
+            controller.abort();
+            observer.disconnect();
+        };
+
+    }, [session]);
 
     if(session?.user){
         return (
-            <>
+            <div ref={visibleRef}>
                 {
                     pending
                     ?
@@ -313,7 +325,7 @@ const Save = ({ values, text }) => {
 
                 }
 
-            </>
+            </div>
         )
     }
 
