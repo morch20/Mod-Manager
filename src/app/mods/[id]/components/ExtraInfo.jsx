@@ -1,5 +1,6 @@
 import { AiOutlineWarning } from 'react-icons/ai';
 import { BsFillCircleFill, BsCodeSlash, BsBook, BsDiscord} from 'react-icons/bs';
+import { PiCubeLight } from 'react-icons/pi';
 import Image from 'next/image';
 // import { Icons } from "@/components";
 
@@ -98,13 +99,19 @@ const ExtraInfo = async ({ info }) => {
                                 key={i.user.id} 
                                 className='my-1 p-1 flex gap-x-2 items-center active:text-gray-300 hover:bg-gray-700 rounded-xl cursor-pointer'
                             >
-                                <Image
-                                    src={i.user.avatar_url}
-                                    alt='Avatar'
-                                    width={50}
-                                    height={50}
-                                    className='rounded-full'
-                                />
+                                {
+                                    i.user.avatar_url
+                                    ?
+                                        <Image
+                                            src={i.user.avatar_url || ''}
+                                            alt='Avatar'
+                                            width={50}
+                                            height={50}
+                                            className='rounded-full shadow-md'
+                                        />
+                                    :
+                                        <PiCubeLight color='#9a9a9a' className='rounded-full w-12 h-12 p-1 bg-[#434956] shadow-md' />
+                                }
                                 <div>
                                     <h4 className='font-bold'>{i.user.username}</h4>
                                     <p>{i.role}</p>
