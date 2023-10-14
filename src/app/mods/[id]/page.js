@@ -5,17 +5,18 @@ export async function getInfo(id){
     return response.json();
 }
 
-const Page = async ({ params  }) => {
+const Page = async ({ params  }) => { 
 	const info = await getInfo(params.id);
 	const converter = new Showdown.Converter();
 	const html = converter.makeHtml(info.body)
 
-
     return (
-      	<div className="p-4">
-			<article className="reset" dangerouslySetInnerHTML={{__html: html}}>
-			</article>
-      	</div>
+		<div className="bg-[color:var(--gray)] w-full h-fit rounded-xl my-5 shadow-md">
+			<div className="p-4">
+				<article className="reset" dangerouslySetInnerHTML={{__html: html}}>
+				</article>
+			</div>
+		</div>
     )
 }
 

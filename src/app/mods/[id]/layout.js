@@ -12,6 +12,22 @@ export async function getInfo(id){
     return response.json();
 }
 
+export async function generateMetadata({ params, searchParams }, parent) {
+
+    const response = await fetch(process.env.NEXT_PUBLIC_MOD_BASE_URL + '/project/' + params.id);
+	if(response.ok){
+		const data = await response.json();
+		return {
+			title: 'Mod Manager | ' + data.title,
+			description: data.description
+		}
+	}
+	return {
+
+		title: 'Mod Manager | ' + params.id
+	}
+}
+
 const Layout = async ({ children, params }) => {
 
 	const info = await getInfo(params.id);
@@ -36,9 +52,9 @@ const Layout = async ({ children, params }) => {
 				<div className="bg-[color:var(--gray)] w-full h-fit min-h-14 rounded-xl my-5 shadow-md">
 					<Nav id={params.id} gallery={info?.gallery} />
 				</div>
-				<div className="bg-[color:var(--gray)] w-full h-fit rounded-xl my-5 shadow-md">
-					{children}
-				</div>
+				{
+					children
+				}
 				<div className="lg:hidden bg-[color:var(--gray)] w-full h-fit rounded-xl my-6 shadow-md">
 					<ExtraInfo info={info} />
 				</div>

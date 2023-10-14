@@ -42,4 +42,6 @@ const search = [
     searchFabric
 ];
 
-module.exports = { sortByOptions, showPerPage, search, searchFabric };
+const gameVersionsRegex =  /(\d[.](\d{1,2})[.]?\d?)/;
+
+module.exports = { sortByOptions, showPerPage, search, searchFabric, gameVersionsRegex };
